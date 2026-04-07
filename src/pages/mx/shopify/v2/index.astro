@@ -528,8 +528,9 @@ import LandingLayout from '../../../../layouts/LandingLayout.astro';
     .features-section .section-sub { color: var(--dark); opacity: 0.6; }
 
     .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
       max-width: 1420px;
       margin: 0 auto;
@@ -542,6 +543,7 @@ import LandingLayout from '../../../../layouts/LandingLayout.astro';
       border-radius: 0px;
       padding: 32px 24px;
       transition: all 0.25s;
+      width: calc((100% - 40px) / 3);
     }
     .feature-card:hover {
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
@@ -1221,7 +1223,8 @@ import LandingLayout from '../../../../layouts/LandingLayout.astro';
       .integration-strip { flex-direction: column; gap: 24px; }
       .integration-features { flex-direction: column; align-items: center; }
       .pain-grid { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
+      .features-grid { flex-direction: column; }
+      .feature-card { width: 100%; }
       .feature-card--wide {
         grid-column: span 1;
         grid-template-columns: 1fr;
