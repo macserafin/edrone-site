@@ -1,0 +1,1065 @@
+---
+export const prerender = true;
+
+import LandingLayout from '../../../layouts/LandingLayout.astro';
+
+const steps = [
+  // PHASE 1 — START
+  {
+    phase: 1,
+    num: 1,
+    title: 'Aktywuj darmowe konto Freemium',
+    time: '5 min',
+    summary: 'Zarejestruj się w edrone bez karty kredytowej i bez zobowiązań. Freemium daje Ci dostęp do wszystkich kluczowych funkcji.',
+    details: [
+      'Wejdź na control.edrone.me/register',
+      'Podaj adres sklepu i dane kontaktowe',
+      'Potwierdź adres e-mail',
+      'Gotowe — panel edrone czeka na Ciebie'
+    ],
+    cta: { label: 'Załóż konto', href: 'https://control.edrone.me/register' },
+    help: { label: 'Co to jest konto Freemium?', href: 'https://help.edrone.me/pl/articles/11197093' }
+  },
+  {
+    phase: 1,
+    num: 2,
+    title: 'Poznaj Podgląd aktywności',
+    time: '10 min',
+    summary: 'Sprawdź centrum dowodzenia edrone — zobaczysz tu wszystkie automatyzacje, kampanie i wyniki sklepu w jednym miejscu.',
+    details: [
+      'Zaloguj się do panelu edrone',
+      'Otwórz zakładkę Podgląd aktywności',
+      'Zobacz listę aktywnych scenariuszy i ostatnich kampanii',
+      'Sprawdź metryki: otwarcia, kliknięcia, przychód'
+    ],
+    cta: { label: 'Otwórz panel', href: 'https://control.edrone.me/login' },
+    help: { label: 'Co znajdę w Podglądzie aktywności?', href: 'https://help.edrone.me/pl/articles/11197133' }
+  },
+  {
+    phase: 1,
+    num: 3,
+    title: 'Obejrzyj szkolenia onboardingowe',
+    time: '30 min',
+    summary: 'Gotowe nagrania, które przeprowadzą Cię krok po kroku przez konfigurację i pierwsze kampanie. Oszczędzą Ci godzin prób i błędów.',
+    details: [
+      'Newsletter Quick Start — 20 minut do pierwszej gotowej kreacji',
+      'Podstawy scenariuszy automatyzacji',
+      'Konfiguracja pop-upów i formularzy zapisu',
+      'Analityka i czytanie wyników'
+    ],
+    cta: { label: 'Zobacz materiały', href: 'https://help.edrone.me/pl/articles/8333358' },
+    help: { label: 'Newsletter Quick Start (nagranie)', href: 'https://help.edrone.me/pl/articles/8721433' }
+  },
+  // PHASE 2 — CONNECT
+  {
+    phase: 2,
+    num: 4,
+    title: 'Zintegruj sklep z edrone',
+    time: '20 min',
+    summary: 'Podłącz Shoper, WooCommerce, Shopify, PrestaShop lub IdoSell. Integracja uruchamia śledzenie zachowań i synchronizację produktów.',
+    details: [
+      'W panelu edrone wybierz Integracje → wskaż swoją platformę',
+      'Zainstaluj wtyczkę lub wklej skrypt tracking',
+      'Zweryfikuj, że tracker wysyła dane (Podgląd aktywności)',
+      'Sprawdź, że klienci i zamówienia synchronizują się poprawnie'
+    ],
+    cta: { label: 'Przejdź do integracji', href: 'https://control.edrone.me/login' },
+    help: { label: 'Jak dokonać integracji sklepu?', href: 'https://help.edrone.me/pl/articles/8333407' }
+  },
+  {
+    phase: 2,
+    num: 5,
+    title: 'Wgraj feed produktowy',
+    time: '15 min',
+    summary: 'Feed produktowy zasila scenariusze porzuconych koszyków, rekomendacje i dynamiczne treści w emailach. Bez niego automatyzacje nie znają Twoich produktów.',
+    details: [
+      'Przygotuj link do feedu XML (większość platform generuje go automatycznie)',
+      'W panelu edrone: Produkty → Dodaj feed',
+      'Wklej URL i wybierz częstotliwość odświeżania',
+      'Zweryfikuj, że produkty zaciągnęły się z cenami i zdjęciami'
+    ],
+    cta: { label: 'Dodaj feed', href: 'https://control.edrone.me/login' },
+    help: { label: 'Jak wgrać feed produktowy?', href: 'https://help.edrone.me/pl/articles/8333380' }
+  },
+  {
+    phase: 2,
+    num: 6,
+    title: 'Zacznij budować bazę subskrybentów',
+    time: 'ciągłe',
+    summary: 'Bez bazy nie ma marketing automation. Zdobądź pierwszych subskrybentów zanim odpalisz pierwszą kampanię.',
+    details: [
+      'Uruchom pop-up powitalny z rabatem za zapis',
+      'Dodaj checkbox zgody przy finalizacji zamówienia',
+      'Dodaj formularz zapisu w stopce sklepu',
+      'Zbieraj zgody offline (sklep stacjonarny, eventy)'
+    ],
+    cta: { label: 'Zobacz wskazówki', href: 'https://help.edrone.me/pl/articles/8297150' },
+    help: { label: 'Jak skutecznie budować bazę?', href: 'https://help.edrone.me/pl/articles/8297150' }
+  },
+  // PHASE 3 — LAUNCH
+  {
+    phase: 3,
+    num: 7,
+    title: 'Wyślij pierwszy newsletter',
+    time: '20 min',
+    summary: 'Quick Start pokazuje najszybszą drogę do gotowej kampanii. 20 minut i masz swój pierwszy newsletter w skrzynkach klientów.',
+    details: [
+      'Wybierz szablon z biblioteki edrone',
+      'Edytuj tekst, zdjęcia i CTA',
+      'Zdefiniuj segment odbiorców',
+      'Wyślij test do siebie → zaakceptuj → wyślij do bazy'
+    ],
+    cta: { label: 'Stwórz newsletter', href: 'https://control.edrone.me/login' },
+    help: { label: 'Jak wysłać pierwszy newsletter?', href: 'https://help.edrone.me/pl/articles/8300487' }
+  },
+  {
+    phase: 3,
+    num: 8,
+    title: 'Uruchom pierwszy scenariusz',
+    time: '15 min',
+    summary: 'Automatyzacja porzuconego koszyka — to scenariusz, który zarabia najszybciej. Średnio 51% open rate i pierwsze zwroty w 48h.',
+    details: [
+      'W panelu: Automatyzacje → Porzucony koszyk',
+      'Użyj gotowego szablonu edrone',
+      'Skonfiguruj delay (np. 1h po porzuceniu)',
+      'Aktywuj — scenariusz zaczyna działać automatycznie'
+    ],
+    cta: { label: 'Uruchom automatyzację', href: 'https://control.edrone.me/login' },
+    help: { label: 'Jaki scenariusz uruchomić jako pierwszy?', href: 'https://help.edrone.me/pl/articles/8300376' }
+  },
+  {
+    phase: 3,
+    num: 9,
+    title: 'Co dalej? — Eksploruj zaawansowane funkcje',
+    time: 'dalej',
+    summary: 'Masz podstawy. Teraz czas na personalizację, segmentację zaawansowaną, pop-upy onsite i cross-channel — tam ukryte jest 7x ROI.',
+    details: [
+      'Dodaj scenariusze win-back i cross-sell',
+      'Skonfiguruj pop-upy z inteligentnym triggerem',
+      'Połącz kanał SMS i Web Push',
+      'Ustaw raporty i sprawdź ROI po 30 dniach'
+    ],
+    cta: { label: 'Zobacz roadmapę', href: 'https://help.edrone.me/pl/articles/8320343' },
+    help: { label: 'Mam już integrację — co dalej?', href: 'https://help.edrone.me/pl/articles/8320343' }
+  }
+];
+
+const phases = [
+  { num: 1, name: 'Start', color: 'var(--yellow)', desc: 'Poznaj system i załóż konto' },
+  { num: 2, name: 'Połącz', color: 'var(--turquoise)', desc: 'Zintegruj sklep i dane' },
+  { num: 3, name: 'Uruchom', color: 'var(--pink)', desc: 'Odpal kampanie i zarabiaj' }
+];
+---
+
+<LandingLayout
+  title="Pierwsze kroki z edrone — interaktywny przewodnik startowy"
+  description="9 konkretnych kroków, które przeprowadzą Cię od rejestracji do pierwszego przychodu z marketing automation. Zaznaczaj postęp, śledź checklistę, ucz się edrone w swoim tempie."
+  lang="pl"
+  ogTitle="Pierwsze kroki z edrone — uruchom marketing automation w 30 dni"
+  ogDescription="Interaktywny przewodnik: 9 kroków, 3 fazy, pełny onboarding. Zaznaczaj co zrobiłeś i śledź postęp."
+  ogUrl="https://roi.edrone.me/pl/pierwsze-kroki/"
+  googleFont="Roboto:ital,wght@0,400;0,500;0,700;0,900"
+>
+
+<style>
+  :root {
+    --ink: #2E2E29;
+    --ink-soft: #5A5A52;
+    --line: rgba(46,46,41,0.10);
+    --done-bg: #EDF9EF;
+    --done-stroke: #54B767;
+  }
+
+  body { background: #FAFAF7; }
+
+  /* ── HEADER ── */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo svg { display: block; height: 22px; }
+  .hdr-actions { display: flex; gap: 12px; align-items: center; }
+  .btn-login {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: background 0.2s;
+  }
+  .btn-login:hover { background: rgba(0,0,0,0.05); }
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--yellow);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,255,140,0.5); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 24px 48px;
+    background: radial-gradient(ellipse at top, rgba(255,255,140,0.4) 0%, transparent 60%), #FAFAF7;
+    text-align: center;
+  }
+  .hero-inner { max-width: 780px; margin: 0 auto; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,140,0.5);
+    color: var(--ink);
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--done-stroke); }
+  h1.hero-title {
+    font-family: 'Sans Pro', 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  h1.hero-title .accent {
+    background: var(--yellow);
+    padding: 0 10px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  .hero-sub {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto 32px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .hero-stat strong {
+    display: block;
+    font-family: 'Sans Pro', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .hero-stat span {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    position: sticky;
+    top: 64px;
+    z-index: 50;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 24px;
+  }
+  .progress-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .progress-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .progress-label strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 10px;
+    background: var(--line);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--yellow) 0%, var(--turquoise) 50%, var(--pink) 100%);
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
+    border-radius: 100px;
+  }
+  .progress-phases {
+    display: flex;
+    gap: 8px;
+  }
+  .phase-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--line);
+    transition: all 0.3s;
+  }
+  .phase-dot.partial {
+    background: var(--yellow);
+    box-shadow: 0 0 0 3px rgba(255,255,140,0.3);
+  }
+  .phase-dot.done {
+    background: var(--done-stroke);
+    box-shadow: 0 0 0 3px rgba(84,183,103,0.25);
+  }
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .reset-btn:hover { background: var(--line); color: var(--ink); }
+
+  /* ── USP SECTION ── */
+  .usp {
+    padding: 64px 24px 24px;
+  }
+  .usp-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .usp-eyebrow {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .usp h2 {
+    font-family: 'Sans Pro', sans-serif;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+    max-width: 720px;
+  }
+  .usp-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 640px;
+    line-height: 1.55;
+    margin-bottom: 36px;
+  }
+  .usp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .usp-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px 24px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .usp-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(46,46,41,0.2);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  }
+  .usp-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+  }
+  .usp-icon.yellow { background: var(--yellow); }
+  .usp-icon.turquoise { background: var(--turquoise); }
+  .usp-icon.pink { background: var(--pink); }
+  .usp-card h3 {
+    font-family: 'Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .usp-card p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 720px) {
+    .usp { padding: 40px 20px 16px; }
+    .usp-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── PHASES ── */
+  .phase {
+    padding: 72px 24px 40px;
+  }
+  .phase-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .phase-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sans Pro', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .phase h2 {
+    font-family: 'Sans Pro', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .phase-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  /* ── STEP CARDS ── */
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+  .step {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 0;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+  }
+  .step:hover {
+    border-color: rgba(46,46,41,0.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .step.done {
+    background: var(--done-bg);
+    border-color: rgba(84,183,103,0.3);
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .step-check {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    background: #fff;
+    cursor: pointer;
+  }
+  .step-check:hover { border-color: var(--ink); }
+  .step.done .step-check {
+    background: var(--done-stroke);
+    border-color: var(--done-stroke);
+  }
+  .step-check svg {
+    width: 16px;
+    height: 16px;
+    stroke: #fff;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .step.done .step-check svg { opacity: 1; }
+  .step-num {
+    font-family: 'Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .step-title-wrap { flex: 1; min-width: 0; }
+  .step-title {
+    font-family: 'Sans Pro', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .step.done .step-title {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: rgba(84,183,103,0.4);
+    color: var(--ink-soft);
+  }
+  .step-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    background: var(--line);
+    padding: 4px 10px;
+    border-radius: 100px;
+    flex-shrink: 0;
+  }
+  .step.done .step-time { background: rgba(84,183,103,0.15); color: var(--done-stroke); }
+  .step-toggle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    color: var(--ink-soft);
+  }
+  .step.open .step-toggle { transform: rotate(180deg); }
+  .step-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .step.open .step-body { grid-template-rows: 1fr; }
+  .step-body-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .step-content {
+    padding: 0 28px 28px 84px;
+    border-top: 1px solid var(--line);
+    margin-top: 0;
+    padding-top: 20px;
+  }
+  .step.done .step-content { border-top-color: rgba(84,183,103,0.2); }
+  .step-summary {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .step-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  .step-checklist li {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .step-checklist li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--ink);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+  .step-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .step-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .action-primary {
+    background: var(--ink);
+    color: #fff;
+  }
+  .action-primary:hover { background: #000; transform: translateY(-1px); }
+  .action-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .action-secondary:hover { border-color: var(--ink); }
+  .action-done {
+    background: var(--yellow);
+    color: var(--ink);
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+  }
+  .action-done:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,255,140,0.5); }
+  .action-done.checked { background: var(--done-stroke); color: #fff; }
+  .step-action svg { width: 14px; height: 14px; }
+
+  /* ── CELEBRATION ── */
+  .celebration {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(46,46,41,0.65);
+    backdrop-filter: blur(8px);
+    padding: 24px;
+  }
+  .celebration.show { display: flex; animation: fadeIn 0.4s ease; }
+  .celebration-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 48px 40px;
+    max-width: 460px;
+    text-align: center;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.25);
+    position: relative;
+    animation: popIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.15);
+  }
+  .celebration-emoji { font-size: 64px; line-height: 1; margin-bottom: 16px; }
+  .celebration h3 {
+    font-family: 'Sans Pro', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .celebration p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .celebration-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-size: 20px;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.85) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  /* ── FOOTER CTA ── */
+  .footer-cta {
+    padding: 80px 24px 100px;
+    text-align: center;
+    background: var(--ink);
+    color: #fff;
+  }
+  .footer-cta h2 {
+    font-family: 'Sans Pro', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .footer-cta h2 .accent { background: var(--yellow); color: var(--ink); padding: 0 10px; border-radius: 6px; }
+  .footer-cta p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 32px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-cta .btn-cta {
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+  .footer-note {
+    margin-top: 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-note a { color: var(--yellow); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 56px 20px 36px; }
+    .hero-stats { gap: 24px; }
+    .progress-phases { display: none; }
+    .phase { padding: 48px 20px 28px; }
+    .step-header { padding: 18px 20px; gap: 14px; }
+    .step-content { padding: 16px 20px 24px; }
+    .step-num { display: none; }
+    .step-title { font-size: 16.5px; }
+    .step-time { display: none; }
+    .footer-cta { padding: 60px 20px 80px; }
+  }
+</style>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="https://edrone.me" class="logo" aria-label="edrone">
+      <svg viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text x="0" y="24" font-family="Sans Pro, Roboto, sans-serif" font-size="22" font-weight="700" fill="#2E2E29">edrone</text>
+      </svg>
+    </a>
+    <div class="hdr-actions">
+      <a href="https://control.edrone.me/login" class="btn-login">Zaloguj</a>
+      <a href="https://control.edrone.me/register" class="btn-cta">
+        Załóż konto
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow"><span class="eyebrow-dot"></span>Interaktywny przewodnik startowy</span>
+    <h1 class="hero-title">Pierwsze kroki <br>z <span class="accent">edrone</span>.</h1>
+    <p class="hero-sub"><strong>Moc enterprise CRM. Prostota narzędzia, którego nie musisz się uczyć.</strong><br>9 konkretnych zadań w 3 fazach — od rejestracji do pierwszego przychodu z marketing automation. Zaznaczaj co zrobiłeś, postęp zapisze się automatycznie.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>~2h</strong><span>pełny setup</span></div>
+      <div class="hero-stat"><strong>9</strong><span>kroków</span></div>
+      <div class="hero-stat"><strong>7×</strong><span>ROI w 3 mies.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label"><strong id="progress-count">0</strong> z 9 gotowe</span>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-phases">
+      <span class="phase-dot" id="phase-dot-1" title="Start"></span>
+      <span class="phase-dot" id="phase-dot-2" title="Połącz"></span>
+      <span class="phase-dot" id="phase-dot-3" title="Uruchom"></span>
+    </div>
+    <button class="reset-btn" id="reset-btn" type="button">Reset</button>
+  </div>
+</div>
+
+<section class="usp">
+  <div class="usp-inner">
+    <span class="usp-eyebrow">Dlaczego edrone</span>
+    <h2>Jedyna platforma marketing automation zbudowana dla małych sklepów e-commerce — które nie mają czasu ani budżetu na eksperymenty.</h2>
+    <p class="usp-intro">Zanim zaczniesz konfigurację, zobacz co edrone rozwiązuje. Nie sprzedajemy funkcji — sprzedajemy wyniki dla Twojego sklepu.</p>
+    <div class="usp-grid">
+      <div class="usp-card">
+        <div class="usp-icon yellow">↺</div>
+        <h3>Retencja, która się opłaca</h3>
+        <p>Pierwsza transakcja rzadko zwraca koszt reklamy. edrone automatycznie przywraca klientów — porzucone koszyki, rekomendacje produktów, win-back. Średnio <strong>7× ROI w 3 miesiące</strong>.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon turquoise">✦</div>
+        <h3>Zero ekspertów od marketingu</h3>
+        <p>Nie masz czasu uczyć się marketingu. System wie co zrobić i robi to za Ciebie — gotowe scenariusze, gotowe kreacje, gotowe segmenty. Ty decydujesz, kiedy nacisnąć start.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon pink">◈</div>
+        <h3>Twój kanał, Twoje reguły</h3>
+        <p>Allegro i marketplaces zjadają marżę. edrone buduje Twoją własną bazę klientów — first-party data, LTV, powtarzalne zakupy. Mniej zależności, więcej kontroli.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{phases.map((phase) => (
+  <section class="phase" id={`phase-${phase.num}`}>
+    <div class="phase-inner">
+      <div class="phase-header">
+        <div class="phase-badge" style={`background: ${phase.color};`}>{phase.num}</div>
+        <div>
+          <h2>{phase.name}</h2>
+          <p class="phase-desc">{phase.desc}</p>
+        </div>
+      </div>
+      <div class="steps">
+        {steps.filter(s => s.phase === phase.num).map((step) => (
+          <article class="step" data-step={step.num} id={`step-${step.num}`}>
+            <div class="step-header" data-toggle={step.num}>
+              <div class="step-check" data-check={step.num} role="checkbox" aria-checked="false" aria-label={`Oznacz krok ${step.num} jako zrobiony`} tabindex="0">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="step-num">Krok {step.num}</span>
+              <div class="step-title-wrap">
+                <div class="step-title">{step.title}</div>
+              </div>
+              <span class="step-time">{step.time}</span>
+              <div class="step-toggle">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="step-body-inner">
+                <div class="step-content">
+                  <p class="step-summary">{step.summary}</p>
+                  <ul class="step-checklist">
+                    {step.details.map((d) => <li>{d}</li>)}
+                  </ul>
+                  <div class="step-actions">
+                    <a href={step.cta.href} target="_blank" rel="noopener" class="step-action action-primary">
+                      {step.cta.label}
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M6 3h7v7M13 3l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href={step.help.href} target="_blank" rel="noopener" class="step-action action-secondary">
+                      {step.help.label}
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M6 3h7v7M13 3l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <button type="button" class="step-action action-done" data-done={step.num}>Oznacz jako zrobione</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+))}
+
+<section class="footer-cta">
+  <h2>Gotowy na <span class="accent">7× ROI</span>?</h2>
+  <p>Freemium w edrone jest naprawdę darmowy. Załóż konto, przejdź przez pierwsze kroki i zobacz wyniki po 30 dniach.</p>
+  <a href="https://control.edrone.me/register" class="btn-cta">
+    Załóż darmowe konto
+    <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <p class="footer-note">Potrzebujesz pomocy? Napisz na <a href="mailto:support@edrone.me">support@edrone.me</a> lub zajrzyj do <a href="https://help.edrone.me/pl/">Centrum Pomocy</a>.</p>
+</section>
+
+<div class="celebration" id="celebration" role="dialog" aria-labelledby="celebration-title">
+  <div class="celebration-card">
+    <button class="celebration-close" id="celebration-close" aria-label="Zamknij">&times;</button>
+    <div class="celebration-emoji">🎉</div>
+    <h3 id="celebration-title">Gratulacje!</h3>
+    <p>Przeszedłeś przez wszystkie pierwsze kroki w edrone. Twój sklep jest gotowy na marketing automation — czas sprawdzić wyniki.</p>
+    <a href="https://control.edrone.me/login" class="btn-cta">Otwórz panel edrone
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  const STORAGE_KEY = 'edrone_first_steps_pl_v1';
+  const TOTAL_STEPS = 9;
+  const PHASE_STEPS = { 1: [1,2,3], 2: [4,5,6], 3: [7,8,9] };
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : { done: [], celebrated: false };
+    } catch (e) {
+      return { done: [], celebrated: false };
+    }
+  }
+
+  function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  let state = loadState();
+
+  function render() {
+    const doneCount = state.done.length;
+    const pct = Math.round((doneCount / TOTAL_STEPS) * 100);
+
+    // Progress bar + count
+    const fill = document.getElementById('progress-fill');
+    const count = document.getElementById('progress-count');
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = doneCount;
+
+    // Phase dots
+    for (let p = 1; p <= 3; p++) {
+      const dot = document.getElementById('phase-dot-' + p);
+      if (!dot) continue;
+      const stepsInPhase = PHASE_STEPS[p];
+      const doneInPhase = stepsInPhase.filter(n => state.done.includes(n)).length;
+      dot.classList.remove('partial', 'done');
+      if (doneInPhase === stepsInPhase.length) dot.classList.add('done');
+      else if (doneInPhase > 0) dot.classList.add('partial');
+    }
+
+    // Step cards
+    document.querySelectorAll('.step').forEach(card => {
+      const num = parseInt(card.dataset.step, 10);
+      const isDone = state.done.includes(num);
+      card.classList.toggle('done', isDone);
+      const check = card.querySelector('.step-check');
+      if (check) check.setAttribute('aria-checked', isDone ? 'true' : 'false');
+      const btn = card.querySelector('.action-done');
+      if (btn) {
+        btn.textContent = isDone ? 'Zrobione ✓' : 'Oznacz jako zrobione';
+        btn.classList.toggle('checked', isDone);
+      }
+    });
+
+    // Celebration
+    if (doneCount === TOTAL_STEPS && !state.celebrated) {
+      showCelebration();
+      state.celebrated = true;
+      saveState(state);
+    }
+  }
+
+  function toggleStep(num) {
+    const idx = state.done.indexOf(num);
+    if (idx === -1) state.done.push(num);
+    else state.done.splice(idx, 1);
+    if (state.done.length < TOTAL_STEPS) state.celebrated = false;
+    saveState(state);
+    render();
+    if (window.dataLayer) {
+      window.dataLayer.push({ event: 'first_steps_toggle', step: num, done: idx === -1 });
+    }
+  }
+
+  function openCard(num, force) {
+    const card = document.getElementById('step-' + num);
+    if (!card) return;
+    if (force === true) card.classList.add('open');
+    else if (force === false) card.classList.remove('open');
+    else card.classList.toggle('open');
+  }
+
+  function showCelebration() { document.getElementById('celebration').classList.add('show'); }
+  function hideCelebration() { document.getElementById('celebration').classList.remove('show'); }
+
+  // Wire up checkboxes
+  document.querySelectorAll('.step-check').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleStep(parseInt(el.dataset.check, 10));
+    });
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleStep(parseInt(el.dataset.check, 10));
+      }
+    });
+  });
+
+  // Wire up "Mark done" buttons
+  document.querySelectorAll('.action-done').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleStep(parseInt(btn.dataset.done, 10));
+    });
+  });
+
+  // Wire up header toggle
+  document.querySelectorAll('.step-header').forEach(header => {
+    header.addEventListener('click', (e) => {
+      if (e.target.closest('.step-check')) return;
+      openCard(parseInt(header.dataset.toggle, 10));
+    });
+  });
+
+  // Reset
+  const resetBtn = document.getElementById('reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (state.done.length === 0) return;
+      if (confirm('Zresetować postęp pierwszych kroków?')) {
+        state = { done: [], celebrated: false };
+        saveState(state);
+        render();
+      }
+    });
+  }
+
+  // Celebration close
+  const celebClose = document.getElementById('celebration-close');
+  if (celebClose) celebClose.addEventListener('click', hideCelebration);
+  document.getElementById('celebration').addEventListener('click', (e) => {
+    if (e.target.id === 'celebration') hideCelebration();
+  });
+
+  // Open first undone card on load
+  const firstUndone = [1,2,3,4,5,6,7,8,9].find(n => !state.done.includes(n));
+  if (firstUndone) openCard(firstUndone, true);
+
+  render();
+})();
+</script>
+
+</LandingLayout>

@@ -1,0 +1,534 @@
+---
+export const prerender = true;
+
+import LandingLayout from '../../../layouts/LandingLayout.astro';
+
+const steps = [
+  // PHASE 1 — START
+  {
+    phase: 1,
+    num: 1,
+    title: 'Activate your free Freemium account',
+    time: '5 min',
+    summary: 'Sign up to edrone with no credit card and no strings attached. Freemium unlocks every core feature so you can build confidence before you pay.',
+    details: [
+      'Go to control.edrone.me/register',
+      'Enter your store URL and contact info',
+      'Confirm your email address',
+      "That's it — your edrone workspace is waiting"
+    ],
+    cta: { label: 'Create account', href: 'https://control.edrone.me/register' },
+    help: { label: 'What is the Freemium account?', href: 'https://help.edrone.me/en/articles/11197093' }
+  },
+  {
+    phase: 1,
+    num: 2,
+    title: 'Get to know the Activity Overview',
+    time: '10 min',
+    summary: "Your command center. One place to see every automation, every campaign, every result — without digging through menus.",
+    details: [
+      'Log in to the edrone panel',
+      'Open the Activity Overview tab',
+      'See your active scenarios and recent campaigns',
+      'Check key metrics: opens, clicks, revenue'
+    ],
+    cta: { label: 'Open panel', href: 'https://control.edrone.me/login' },
+    help: { label: "What's in the Activity Overview?", href: 'https://help.edrone.me/en/articles/11197133' }
+  },
+  {
+    phase: 1,
+    num: 3,
+    title: 'Watch the onboarding training',
+    time: '30 min',
+    summary: 'Short, focused videos that walk you through setup and your first campaigns. Saves you hours of trial and error.',
+    details: [
+      'Newsletter Quick Start — 20 minutes to your first ready-to-send campaign',
+      'Automation scenario basics',
+      'Pop-up and sign-up form setup',
+      'Reading your analytics without a PhD'
+    ],
+    cta: { label: 'See the training', href: 'https://help.edrone.me/en/articles/8333358' },
+    help: { label: 'Newsletter Quick Start (video)', href: 'https://help.edrone.me/en/articles/8721433' }
+  },
+  // PHASE 2 — CONNECT
+  {
+    phase: 2,
+    num: 4,
+    title: 'Connect your store to edrone',
+    time: '20 min',
+    summary: 'Plug in Shoper, WooCommerce, Shopify, PrestaShop or IdoSell. Integration turns on behavior tracking and product sync — this is where the magic starts.',
+    details: [
+      'In the edrone panel, pick Integrations → choose your platform',
+      'Install the plugin or paste the tracking script',
+      'Verify the tracker is sending data (Activity Overview)',
+      'Confirm that customers and orders sync correctly'
+    ],
+    cta: { label: 'Go to integrations', href: 'https://control.edrone.me/login' },
+    help: { label: 'How do I integrate my store?', href: 'https://help.edrone.me/en/articles/8333407' }
+  },
+  {
+    phase: 2,
+    num: 5,
+    title: 'Upload your product feed',
+    time: '15 min',
+    summary: 'Your product feed powers abandoned cart flows, recommendations, and dynamic email content. Without it, automations have no idea what you sell.',
+    details: [
+      'Grab your XML feed URL (most platforms generate it automatically)',
+      'In the edrone panel: Products → Add feed',
+      'Paste the URL and pick a refresh frequency',
+      'Verify products imported with prices and images'
+    ],
+    cta: { label: 'Add feed', href: 'https://control.edrone.me/login' },
+    help: { label: 'How do I upload a product feed?', href: 'https://help.edrone.me/en/articles/8333380' }
+  },
+  {
+    phase: 2,
+    num: 6,
+    title: 'Start building your subscriber base',
+    time: 'ongoing',
+    summary: "No list, no marketing automation. Collect your first subscribers before you launch your first campaign — it's what makes everything else work.",
+    details: [
+      'Launch a welcome pop-up with a sign-up discount',
+      'Add a consent checkbox at checkout',
+      'Drop a sign-up form in your store footer',
+      'Collect opt-ins offline too (brick-and-mortar, events)'
+    ],
+    cta: { label: 'See best practices', href: 'https://help.edrone.me/en/articles/8297150' },
+    help: { label: 'How to build a subscriber base', href: 'https://help.edrone.me/en/articles/8297150' }
+  },
+  // PHASE 3 — LAUNCH
+  {
+    phase: 3,
+    num: 7,
+    title: 'Send your first newsletter',
+    time: '20 min',
+    summary: 'Quick Start is the fastest path to a live campaign. 20 minutes from now, your first newsletter can be in your customers inboxes.',
+    details: [
+      "Pick a template from edrone's library",
+      'Edit the text, images and CTA',
+      'Define your audience segment',
+      'Send a test to yourself → approve → send to your list'
+    ],
+    cta: { label: 'Create newsletter', href: 'https://control.edrone.me/login' },
+    help: { label: 'How do I send my first newsletter?', href: 'https://help.edrone.me/en/articles/8300487' }
+  },
+  {
+    phase: 3,
+    num: 8,
+    title: 'Launch your first automation',
+    time: '15 min',
+    summary: "Abandoned cart is the scenario that pays back fastest. Average 51% open rate, first revenue recovered within 48 hours.",
+    details: [
+      'Panel → Automations → Abandoned cart',
+      "Use edrone's ready-made template",
+      'Set the delay (e.g. 1 hour after abandonment)',
+      'Activate — the scenario runs on its own from here'
+    ],
+    cta: { label: 'Launch automation', href: 'https://control.edrone.me/login' },
+    help: { label: 'Which scenario should I launch first?', href: 'https://help.edrone.me/en/articles/8300376' }
+  },
+  {
+    phase: 3,
+    num: 9,
+    title: "What's next — explore advanced features",
+    time: 'next',
+    summary: "You've got the basics. Now comes personalization, deeper segmentation, onsite pop-ups and cross-channel — that's where the 7× ROI lives.",
+    details: [
+      'Add win-back and cross-sell scenarios',
+      'Set up pop-ups with smart triggers',
+      'Connect SMS and Web Push',
+      'Build reports and check your ROI after 30 days'
+    ],
+    cta: { label: 'See the roadmap', href: 'https://help.edrone.me/en/articles/8320343' },
+    help: { label: "I'm integrated — what now?", href: 'https://help.edrone.me/en/articles/8320343' }
+  }
+];
+
+const phases = [
+  { num: 1, name: 'Start', color: 'var(--yellow)', desc: 'Learn the system and set up your account' },
+  { num: 2, name: 'Connect', color: 'var(--turquoise)', desc: 'Integrate your store and your data' },
+  { num: 3, name: 'Launch', color: 'var(--pink)', desc: 'Fire up campaigns and start earning' }
+];
+---
+
+<LandingLayout
+  title="Getting started with edrone — interactive onboarding guide"
+  description="9 concrete steps that take you from signup to your first marketing automation revenue. Track your progress, tick the checklist, learn edrone at your own pace."
+  lang="en"
+  ogTitle="Getting started with edrone — launch marketing automation in 30 days"
+  ogDescription="Interactive guide: 9 steps, 3 phases, full onboarding. Check off what you've done and watch your progress grow."
+  ogUrl="https://roi.edrone.me/en/getting-started/"
+  googleFont="Roboto:ital,wght@0,400;0,500;0,700;0,900"
+>
+
+<style>
+  :root {
+    --ink: #2E2E29;
+    --ink-soft: #5A5A52;
+    --line: rgba(46,46,41,0.10);
+    --done-bg: #EDF9EF;
+    --done-stroke: #54B767;
+  }
+
+  body { background: #FAFAF7; }
+
+  .header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+  .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo svg { display: block; height: 22px; }
+  .hdr-actions { display: flex; gap: 12px; align-items: center; }
+  .btn-login { font-size: 14px; font-weight: 500; color: var(--ink); text-decoration: none; padding: 8px 14px; border-radius: 100px; transition: background 0.2s; }
+  .btn-login:hover { background: rgba(0,0,0,0.05); }
+  .btn-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: var(--ink); font-weight: 700; font-size: 14px; padding: 10px 22px; border-radius: 100px; text-decoration: none; transition: transform 0.15s, box-shadow 0.2s; }
+  .btn-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,255,140,0.5); }
+
+  .hero { padding: 80px 24px 48px; background: radial-gradient(ellipse at top, rgba(255,255,140,0.4) 0%, transparent 60%), #FAFAF7; text-align: center; }
+  .hero-inner { max-width: 780px; margin: 0 auto; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,140,0.5); color: var(--ink); padding: 8px 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; border-radius: 100px; margin-bottom: 24px; }
+  .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--done-stroke); }
+  h1.hero-title { font-family: 'Sans Pro', 'Roboto', sans-serif; font-weight: 700; font-size: clamp(38px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 20px; }
+  h1.hero-title .accent { background: var(--yellow); padding: 0 10px; border-radius: 8px; display: inline-block; }
+  .hero-sub { font-size: 19px; line-height: 1.55; color: var(--ink-soft); max-width: 620px; margin: 0 auto 32px; }
+  .hero-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 8px; }
+  .hero-stat strong { display: block; font-family: 'Sans Pro', sans-serif; font-size: 32px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .hero-stat span { display: block; margin-top: 4px; font-size: 13px; color: var(--ink-soft); }
+
+  .progress-wrap { position: sticky; top: 64px; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 14px 24px; }
+  .progress-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 20px; }
+  .progress-label { font-size: 13px; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
+  .progress-label strong { color: var(--ink); font-weight: 700; }
+  .progress-bar { flex: 1; height: 10px; background: var(--line); border-radius: 100px; overflow: hidden; position: relative; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--yellow) 0%, var(--turquoise) 50%, var(--pink) 100%); width: 0%; transition: width 0.6s cubic-bezier(0.2, 0.9, 0.3, 1); border-radius: 100px; }
+  .progress-phases { display: flex; gap: 8px; }
+  .phase-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--line); transition: all 0.3s; }
+  .phase-dot.partial { background: var(--yellow); box-shadow: 0 0 0 3px rgba(255,255,140,0.3); }
+  .phase-dot.done { background: var(--done-stroke); box-shadow: 0 0 0 3px rgba(84,183,103,0.25); }
+  .reset-btn { background: none; border: 1px solid var(--line); color: var(--ink-soft); padding: 6px 14px; font-size: 12px; font-weight: 500; border-radius: 100px; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+  .reset-btn:hover { background: var(--line); color: var(--ink); }
+
+  .usp { padding: 64px 24px 24px; }
+  .usp-inner { max-width: 1000px; margin: 0 auto; }
+  .usp-eyebrow { display: inline-block; background: var(--ink); color: #fff; padding: 6px 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; margin-bottom: 16px; }
+  .usp h2 { font-family: 'Sans Pro', sans-serif; font-size: clamp(26px, 3.2vw, 36px); font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 12px; max-width: 720px; }
+  .usp-intro { font-size: 17px; color: var(--ink-soft); max-width: 640px; line-height: 1.55; margin-bottom: 36px; }
+  .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .usp-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+  .usp-card:hover { transform: translateY(-3px); border-color: rgba(46,46,41,0.2); box-shadow: 0 12px 28px rgba(0,0,0,0.06); }
+  .usp-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 22px; }
+  .usp-icon.yellow { background: var(--yellow); }
+  .usp-icon.turquoise { background: var(--turquoise); }
+  .usp-icon.pink { background: var(--pink); }
+  .usp-card h3 { font-family: 'Sans Pro', sans-serif; font-size: 18px; font-weight: 700; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .usp-card p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+
+  .phase { padding: 72px 24px 40px; }
+  .phase-inner { max-width: 860px; margin: 0 auto; }
+  .phase-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+  .phase-badge { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-family: 'Sans Pro', sans-serif; font-size: 24px; font-weight: 700; color: var(--ink); flex-shrink: 0; }
+  .phase h2 { font-family: 'Sans Pro', sans-serif; font-size: 32px; font-weight: 700; line-height: 1.15; color: var(--ink); }
+  .phase-desc { font-size: 15px; color: var(--ink-soft); margin-top: 2px; }
+
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+  .step { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 0; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; overflow: hidden; }
+  .step:hover { border-color: rgba(46,46,41,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+  .step.done { background: var(--done-bg); border-color: rgba(84,183,103,0.3); }
+  .step-header { display: flex; align-items: center; gap: 20px; padding: 24px 28px; cursor: pointer; user-select: none; }
+  .step-check { width: 32px; height: 32px; border: 2px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; background: #fff; cursor: pointer; }
+  .step-check:hover { border-color: var(--ink); }
+  .step.done .step-check { background: var(--done-stroke); border-color: var(--done-stroke); }
+  .step-check svg { width: 16px; height: 16px; stroke: #fff; opacity: 0; transition: opacity 0.2s; }
+  .step.done .step-check svg { opacity: 1; }
+  .step-num { font-family: 'Sans Pro', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink-soft); letter-spacing: 0.05em; flex-shrink: 0; }
+  .step-title-wrap { flex: 1; min-width: 0; }
+  .step-title { font-family: 'Sans Pro', sans-serif; font-size: 19px; font-weight: 700; line-height: 1.3; color: var(--ink); }
+  .step.done .step-title { text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgba(84,183,103,0.4); color: var(--ink-soft); }
+  .step-time { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--ink-soft); background: var(--line); padding: 4px 10px; border-radius: 100px; flex-shrink: 0; }
+  .step.done .step-time { background: rgba(84,183,103,0.15); color: var(--done-stroke); }
+  .step-toggle { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; color: var(--ink-soft); }
+  .step.open .step-toggle { transform: rotate(180deg); }
+  .step-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.9, 0.3, 1); }
+  .step.open .step-body { grid-template-rows: 1fr; }
+  .step-body-inner { overflow: hidden; min-height: 0; }
+  .step-content { padding: 0 28px 28px 84px; border-top: 1px solid var(--line); padding-top: 20px; }
+  .step.done .step-content { border-top-color: rgba(84,183,103,0.2); }
+  .step-summary { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 16px; }
+  .step-checklist { list-style: none; padding: 0; margin: 0 0 20px; }
+  .step-checklist li { display: flex; gap: 12px; padding: 8px 0; font-size: 14.5px; line-height: 1.55; color: var(--ink); }
+  .step-checklist li::before { content: ''; width: 6px; height: 6px; background: var(--ink); border-radius: 50%; flex-shrink: 0; margin-top: 9px; }
+  .step-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .step-action { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 100px; text-decoration: none; transition: all 0.2s; }
+  .action-primary { background: var(--ink); color: #fff; }
+  .action-primary:hover { background: #000; transform: translateY(-1px); }
+  .action-secondary { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .action-secondary:hover { border-color: var(--ink); }
+  .action-done { background: var(--yellow); color: var(--ink); font-family: inherit; border: none; cursor: pointer; }
+  .action-done:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,255,140,0.5); }
+  .action-done.checked { background: var(--done-stroke); color: #fff; }
+  .step-action svg { width: 14px; height: 14px; }
+
+  .celebration { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; background: rgba(46,46,41,0.65); backdrop-filter: blur(8px); padding: 24px; }
+  .celebration.show { display: flex; animation: fadeIn 0.4s ease; }
+  .celebration-card { background: #fff; border-radius: 24px; padding: 48px 40px; max-width: 460px; text-align: center; box-shadow: 0 20px 80px rgba(0,0,0,0.25); position: relative; animation: popIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.15); }
+  .celebration-emoji { font-size: 64px; line-height: 1; margin-bottom: 16px; }
+  .celebration h3 { font-family: 'Sans Pro', sans-serif; font-size: 28px; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+  .celebration p { color: var(--ink-soft); font-size: 16px; margin-bottom: 24px; line-height: 1.5; }
+  .celebration-close { position: absolute; top: 16px; right: 16px; background: none; border: none; width: 32px; height: 32px; cursor: pointer; color: var(--ink-soft); font-size: 20px; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes popIn { from { opacity: 0; transform: scale(0.85) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+  .footer-cta { padding: 80px 24px 100px; text-align: center; background: var(--ink); color: #fff; }
+  .footer-cta h2 { font-family: 'Sans Pro', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.1; margin-bottom: 16px; }
+  .footer-cta h2 .accent { background: var(--yellow); color: var(--ink); padding: 0 10px; border-radius: 6px; }
+  .footer-cta p { font-size: 17px; color: rgba(255,255,255,0.7); margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .footer-cta .btn-cta { font-size: 16px; padding: 16px 32px; }
+  .footer-note { margin-top: 24px; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer-note a { color: var(--yellow); text-decoration: none; }
+
+  @media (max-width: 720px) {
+    .usp { padding: 40px 20px 16px; }
+    .usp-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 56px 20px 36px; }
+    .hero-stats { gap: 24px; }
+    .progress-phases { display: none; }
+    .phase { padding: 48px 20px 28px; }
+    .step-header { padding: 18px 20px; gap: 14px; }
+    .step-content { padding: 16px 20px 24px; }
+    .step-num { display: none; }
+    .step-title { font-size: 16.5px; }
+    .step-time { display: none; }
+    .footer-cta { padding: 60px 20px 80px; }
+  }
+</style>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="https://edrone.me" class="logo" aria-label="edrone">
+      <svg viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text x="0" y="24" font-family="Sans Pro, Roboto, sans-serif" font-size="22" font-weight="700" fill="#2E2E29">edrone</text>
+      </svg>
+    </a>
+    <div class="hdr-actions">
+      <a href="https://control.edrone.me/login" class="btn-login">Log in</a>
+      <a href="https://control.edrone.me/register" class="btn-cta">
+        Sign up free
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow"><span class="eyebrow-dot"></span>Interactive onboarding guide</span>
+    <h1 class="hero-title">Getting started <br>with <span class="accent">edrone</span>.</h1>
+    <p class="hero-sub"><strong>The power of an enterprise CRM. The simplicity of a tool you don't need to learn.</strong><br>9 concrete tasks across 3 phases — from signup to your first marketing automation revenue. Check what you've done, your progress saves automatically.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>~2h</strong><span>full setup</span></div>
+      <div class="hero-stat"><strong>9</strong><span>steps</span></div>
+      <div class="hero-stat"><strong>7×</strong><span>ROI in 3 months</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label"><strong id="progress-count">0</strong> of 9 done</span>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-phases">
+      <span class="phase-dot" id="phase-dot-1" title="Start"></span>
+      <span class="phase-dot" id="phase-dot-2" title="Connect"></span>
+      <span class="phase-dot" id="phase-dot-3" title="Launch"></span>
+    </div>
+    <button class="reset-btn" id="reset-btn" type="button">Reset</button>
+  </div>
+</div>
+
+<section class="usp">
+  <div class="usp-inner">
+    <span class="usp-eyebrow">Why edrone</span>
+    <h2>The only marketing automation platform built for small ecommerce teams — the ones who can't afford to waste time or money experimenting.</h2>
+    <p class="usp-intro">Before you start configuring, see what edrone actually solves. We don't sell features — we sell results for your store.</p>
+    <div class="usp-grid">
+      <div class="usp-card">
+        <div class="usp-icon yellow">↺</div>
+        <h3>Retention that pays</h3>
+        <p>The first purchase rarely covers your ad spend. edrone brings customers back automatically — abandoned carts, product recommendations, win-back flows. Average <strong>7× ROI in 3 months</strong>.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon turquoise">✦</div>
+        <h3>Zero marketing experts needed</h3>
+        <p>You don't have time to become a marketing specialist. The system knows what to do and does it for you — ready-made scenarios, creatives, segments. You just decide when to hit go.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon pink">◈</div>
+        <h3>Your channel, your rules</h3>
+        <p>Marketplaces eat your margin. edrone helps you build your own customer base — first-party data, higher LTV, repeat purchases. Less dependency, more control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{phases.map((phase) => (
+  <section class="phase" id={`phase-${phase.num}`}>
+    <div class="phase-inner">
+      <div class="phase-header">
+        <div class="phase-badge" style={`background: ${phase.color};`}>{phase.num}</div>
+        <div>
+          <h2>{phase.name}</h2>
+          <p class="phase-desc">{phase.desc}</p>
+        </div>
+      </div>
+      <div class="steps">
+        {steps.filter(s => s.phase === phase.num).map((step) => (
+          <article class="step" data-step={step.num} id={`step-${step.num}`}>
+            <div class="step-header" data-toggle={step.num}>
+              <div class="step-check" data-check={step.num} role="checkbox" aria-checked="false" aria-label={`Mark step ${step.num} as done`} tabindex="0">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="step-num">Step {step.num}</span>
+              <div class="step-title-wrap">
+                <div class="step-title">{step.title}</div>
+              </div>
+              <span class="step-time">{step.time}</span>
+              <div class="step-toggle">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div class="step-body">
+              <div class="step-body-inner">
+                <div class="step-content">
+                  <p class="step-summary">{step.summary}</p>
+                  <ul class="step-checklist">
+                    {step.details.map((d) => <li>{d}</li>)}
+                  </ul>
+                  <div class="step-actions">
+                    <a href={step.cta.href} target="_blank" rel="noopener" class="step-action action-primary">
+                      {step.cta.label}
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M6 3h7v7M13 3l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href={step.help.href} target="_blank" rel="noopener" class="step-action action-secondary">
+                      {step.help.label}
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M6 3h7v7M13 3l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <button type="button" class="step-action action-done" data-done={step.num}>Mark as done</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+))}
+
+<section class="footer-cta">
+  <h2>Ready for <span class="accent">7× ROI</span>?</h2>
+  <p>Freemium at edrone is actually free. Create an account, walk through your first steps, and see results in 30 days.</p>
+  <a href="https://control.edrone.me/register" class="btn-cta">
+    Create free account
+    <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <p class="footer-note">Need help? Email <a href="mailto:support@edrone.me">support@edrone.me</a> or visit the <a href="https://help.edrone.me/en/">Help Center</a>.</p>
+</section>
+
+<div class="celebration" id="celebration" role="dialog" aria-labelledby="celebration-title">
+  <div class="celebration-card">
+    <button class="celebration-close" id="celebration-close" aria-label="Close">&times;</button>
+    <div class="celebration-emoji">🎉</div>
+    <h3 id="celebration-title">Nicely done!</h3>
+    <p>You've walked through every first step with edrone. Your store is ready for marketing automation — time to watch the results roll in.</p>
+    <a href="https://control.edrone.me/login" class="btn-cta">Open edrone panel
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  const STORAGE_KEY = 'edrone_first_steps_en_v1';
+  const TOTAL_STEPS = 9;
+  const PHASE_STEPS = { 1: [1,2,3], 2: [4,5,6], 3: [7,8,9] };
+
+  function loadState() {
+    try { const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : { done: [], celebrated: false }; }
+    catch (e) { return { done: [], celebrated: false }; }
+  }
+  function saveState(state) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {} }
+  let state = loadState();
+
+  function render() {
+    const doneCount = state.done.length;
+    const pct = Math.round((doneCount / TOTAL_STEPS) * 100);
+    const fill = document.getElementById('progress-fill');
+    const count = document.getElementById('progress-count');
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = doneCount;
+    for (let p = 1; p <= 3; p++) {
+      const dot = document.getElementById('phase-dot-' + p);
+      if (!dot) continue;
+      const sp = PHASE_STEPS[p];
+      const dp = sp.filter(n => state.done.includes(n)).length;
+      dot.classList.remove('partial', 'done');
+      if (dp === sp.length) dot.classList.add('done');
+      else if (dp > 0) dot.classList.add('partial');
+    }
+    document.querySelectorAll('.step').forEach(card => {
+      const num = parseInt(card.dataset.step, 10);
+      const isDone = state.done.includes(num);
+      card.classList.toggle('done', isDone);
+      const check = card.querySelector('.step-check');
+      if (check) check.setAttribute('aria-checked', isDone ? 'true' : 'false');
+      const btn = card.querySelector('.action-done');
+      if (btn) { btn.textContent = isDone ? 'Done ✓' : 'Mark as done'; btn.classList.toggle('checked', isDone); }
+    });
+    if (doneCount === TOTAL_STEPS && !state.celebrated) { showCelebration(); state.celebrated = true; saveState(state); }
+  }
+
+  function toggleStep(num) {
+    const idx = state.done.indexOf(num);
+    if (idx === -1) state.done.push(num); else state.done.splice(idx, 1);
+    if (state.done.length < TOTAL_STEPS) state.celebrated = false;
+    saveState(state); render();
+    if (window.dataLayer) window.dataLayer.push({ event: 'first_steps_toggle', step: num, done: idx === -1 });
+  }
+  function openCard(num, force) {
+    const card = document.getElementById('step-' + num);
+    if (!card) return;
+    if (force === true) card.classList.add('open');
+    else if (force === false) card.classList.remove('open');
+    else card.classList.toggle('open');
+  }
+  function showCelebration() { document.getElementById('celebration').classList.add('show'); }
+  function hideCelebration() { document.getElementById('celebration').classList.remove('show'); }
+
+  document.querySelectorAll('.step-check').forEach(el => {
+    el.addEventListener('click', e => { e.stopPropagation(); toggleStep(parseInt(el.dataset.check, 10)); });
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleStep(parseInt(el.dataset.check, 10)); } });
+  });
+  document.querySelectorAll('.action-done').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); toggleStep(parseInt(btn.dataset.done, 10)); });
+  });
+  document.querySelectorAll('.step-header').forEach(header => {
+    header.addEventListener('click', e => { if (e.target.closest('.step-check')) return; openCard(parseInt(header.dataset.toggle, 10)); });
+  });
+  const resetBtn = document.getElementById('reset-btn');
+  if (resetBtn) resetBtn.addEventListener('click', () => {
+    if (state.done.length === 0) return;
+    if (confirm('Reset your progress?')) { state = { done: [], celebrated: false }; saveState(state); render(); }
+  });
+  const celebClose = document.getElementById('celebration-close');
+  if (celebClose) celebClose.addEventListener('click', hideCelebration);
+  document.getElementById('celebration').addEventListener('click', e => { if (e.target.id === 'celebration') hideCelebration(); });
+  const firstUndone = [1,2,3,4,5,6,7,8,9].find(n => !state.done.includes(n));
+  if (firstUndone) openCard(firstUndone, true);
+  render();
+})();
+</script>
+
+</LandingLayout>
